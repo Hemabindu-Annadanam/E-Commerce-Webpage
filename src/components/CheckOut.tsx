@@ -125,7 +125,7 @@ const Checkout = React.memo(() => {
             toast.success('Thank you for your purchase!')
         }, 3000);
         setTimeout(() => {
-            window.location.href = '/products';
+            window.location.href = '/E-Commerce-Webpage/products';
         }, 6000);
 
         setFormData({

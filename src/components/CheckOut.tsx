@@ -112,9 +112,9 @@ const Checkout = React.memo(() => {
             });
         }
     }
-    const handleSubmit = (e: any) => {
-
-        e.preventDefault();
+    const [paidAmount, setPaidAmount] = useState<number | null>(null);
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         const validationErrors = validate()
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
@@ -123,6 +123,7 @@ const Checkout = React.memo(() => {
         setForm(false);
         setErrors({});
         setSubmittedData(formData);
+        setPaidAmount(subTotal); // Store the paid amount before clearing cart
         dispatch(clearCart());
         setTimeout(() => {
             toast.success('Thank you for your purchase!')
@@ -319,7 +320,9 @@ const Checkout = React.memo(() => {
                                 </p>
                                 <p>
                                     <FaMoneyBillWave style={{ marginRight: '8px' }} />
-                                    <strong>Total payment:</strong> ${subTotal.toFixed(2)}
+                                    <strong>Total payment:</strong> ${
+                                        paidAmount !== null ? paidAmount.toFixed(2) : subTotal.toFixed(2)
+                                    }
                                 </p>
                             </div>
 

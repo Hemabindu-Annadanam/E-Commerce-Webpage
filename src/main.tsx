@@ -11,7 +11,7 @@ if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <Provider store={store}>
-      <HashRouter basename="/E-Commerce-Webpage/">
+      <HashRouter basename="/">
         <App />
       </HashRouter>
     </Provider>,

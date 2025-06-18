@@ -122,15 +122,14 @@ const Checkout = React.memo(() => {
             setErrors(validationErrors);
             return;
         }
-        setForm(false)
+        setForm(false);
         setErrors({});
         setSubmittedData(formData);
-
+        dispatch(clearCart()); // Clear cart immediately after successful checkout
         setTimeout(() => {
             toast.success('Thank you for your purchase!')
         }, 3000);
         setTimeout(() => {
-            dispatch(clearCart())
             navigate('/products', { replace: true })
         }, 6000);
 

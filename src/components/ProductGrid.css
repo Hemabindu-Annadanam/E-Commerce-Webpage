@@ -1,0 +1,16 @@
+.form-field{
+    display: inline-block;
+    width: 30%;
+}
+.container-field{
+    padding-top: 50px;
+}
+.control-field{
+  border-color:  #D2B48C!important;
+  box-shadow: none;
+}
+.control-field:hover,
+.control-field:focus {
+  border-color: #D2B48C !important;
+  box-shadow: 0 0 0 0.2rem rgba(226, 149, 48, 0.25) !important;
+}

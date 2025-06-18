@@ -1,0 +1,32 @@
+.control-field{
+  border-color:  #D2B48C!important;
+  box-shadow: none;
+}
+.control-field:hover,
+.control-field:focus {
+  border-color: #D2B48C !important;
+  box-shadow: 0 0 0 0.2rem rgba(226, 149, 48, 0.25) !important;
+}
+.center-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clear-outline-btn {
+  background-color: transparent !important;
+  border: 1px solid #D2B48C;
+  color: black;
+  border-radius: 4px;
+  outline: none;
+}
+
+.clear-outline-btn:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 2px solid red;
+  color: black;
+  outline: none;
+}
+.clear-outline-btn:focus {
+  border-color: red !important;
+  box-shadow: 0 0 0 0.2rem rgba(226, 149, 48, 0.25) !important;
+}

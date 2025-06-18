@@ -14,7 +14,7 @@ const Home = React.memo(() => (
         <p>Discover amazing deals and the latest products at unbeatable prices!</p>
         <p>From daily essentials to exclusive gadgets, we bring everything you need right to your fingertips.</p>
         <p>Enjoy seamless shopping, fast delivery, and top-notch customer service all in one place.</p>
-        <Link to="/E-Commerce-Webpage/products" className="show-products-button"> Show Products </Link> 
+        <Link to="/products" className="show-products-button"> Show Products </Link> 
       </div>
     </div>
   </div>

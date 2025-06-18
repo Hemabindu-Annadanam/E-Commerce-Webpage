@@ -79,7 +79,7 @@ const CartTray = React.memo(() => {
                 <Container className="d-flex align-items-start shopping-cart-container">
                     <Card style={{ flex: 1, maxWidth: '700px' }}>
                         <Card.Header className="d-flex justify-content-between align-items-center card-header" style={{backgroundColor: '#4d4a4a'}}>
-                            <Link to="/E-Commerce-Webpage/products" className="mb-0 continue-button"> Continue Shopping</Link>
+                            <Link to="/products" className="mb-0 continue-button"> Continue Shopping</Link>
                             <Link
                                 to="#"
                                 className="mb-0 empty-button"
@@ -136,7 +136,7 @@ const CartTray = React.memo(() => {
                             <Card.Body className="text-center">
                                 <span className='fw-100'>Ready to Secure Checkout?</span>
                                 <h4 className='pt-2'>Cart SubTotal: ${totalPrice.toFixed(2)}</h4>
-                                <Link to="/E-Commerce-Webpage/checkout" className="btn-color"> Proceed </Link>
+                                <Link to="/checkout" className="btn-color"> Proceed </Link>
                             </Card.Body>
                         </Card>
                     )}

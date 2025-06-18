@@ -33,9 +33,8 @@ const Checkout = React.memo(() => {
         0
     );
     useEffect(() => {
-        console.log('storedCart:-', storedCart);
         setProducts(Array.isArray(storedCart) ? storedCart : []);
-    }, []);
+    }, [storedCart]);
     const [formData, setFormData] = useState<FormDataType>({
         name: '',
         email: '',
@@ -125,7 +124,7 @@ const Checkout = React.memo(() => {
         setForm(false);
         setErrors({});
         setSubmittedData(formData);
-        dispatch(clearCart()); // Clear cart immediately after successful checkout
+        dispatch(clearCart());
         setTimeout(() => {
             toast.success('Thank you for your purchase!')
         }, 3000);

@@ -4,17 +4,16 @@
   "version": "0.0.0",
   "homepage": "https://hemabindu.github.io/my-react-app",
   "type": "module",
-  
   "scripts": {
     "dev": "vite",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "react-scripts start",
-  "build": "react-scripts build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
+    "build": "vite build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",

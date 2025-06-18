@@ -8,11 +8,11 @@ import Checkout from './components/CheckOut';
 // import Checkout from './components/CheckOut';
 const RouterComp = () => (
   <Routes>
-    <Route path="/Webpage/" element={<Home/>}/>
-    <Route path="/" element={<Navigate to="/Webpage/" replace />} />
-    <Route path="Webpage/products" element={<ProductGrid/>}/>
-     <Route path="Webpage/cart" element={<CartTray/>}/>
-     <Route path='Webpage/checkout' element={<Checkout/>}/>
+    <Route path="/E-Commerce-Webpage/" element={<Home/>}/>
+    <Route path="/" element={<Navigate to="/E-Commerce-Webpage/" replace />} />
+    <Route path="E-Commerce-Webpage/products" element={<ProductGrid/>}/>
+     <Route path="E-Commerce-Webpage/cart" element={<CartTray/>}/>
+     <Route path='E-Commerce-Webpage/checkout' element={<Checkout/>}/>
   </Routes>
 );
 

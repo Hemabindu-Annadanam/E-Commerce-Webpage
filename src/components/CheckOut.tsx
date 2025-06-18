@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 import { FaCreditCard, FaEnvelope, FaMapMarkerAlt, FaMoneyBillWave, FaUser } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../slices/cartSlice';
 type FormDataType = {
     name: string;
     email: string;
@@ -24,6 +26,7 @@ const Checkout = React.memo(() => {
     const [products, setProducts] = useState<any[]>([]);
     const [billingForm, setForm] = useState(true);
     const storedCart = useSelector((state: any) => state.cart.items);
+    const dispatch = useDispatch()
      const navigate = useNavigate();
     const subTotal = products.reduce(
         (sum: any, item: any) => sum + (item.price * (item.quantity || 1)),
@@ -127,6 +130,7 @@ const Checkout = React.memo(() => {
             toast.success('Thank you for your purchase!')
         }, 3000);
         setTimeout(() => {
+            dispatch(clearCart())
            navigate('/products', { replace: true })
         }, 6000);
 

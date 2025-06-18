@@ -120,7 +120,6 @@ const Checkout = React.memo(() => {
         setForm(false)
         setErrors({});
         setSubmittedData(formData);
-        localStorage.removeItem('cart');
 
         setTimeout(() => {
             toast.success('Thank you for your purchase!')

@@ -127,7 +127,7 @@ const Checkout = React.memo(() => {
             toast.success('Thank you for your purchase!')
         }, 3000);
         setTimeout(() => {
-           navigate('/products')
+           navigate('/products', { replace: true })
         }, 6000);
 
         setFormData({

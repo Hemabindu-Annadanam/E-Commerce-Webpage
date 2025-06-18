@@ -1,7 +1,7 @@
 import './index.css'
 import App from './App.tsx'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import store from './Store.tsx';
@@ -11,9 +11,9 @@ if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter basename="/E-Commerce-Webpage/">
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </Provider>,
   );
 } else {

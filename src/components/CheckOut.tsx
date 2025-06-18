@@ -131,7 +131,7 @@ const Checkout = React.memo(() => {
         }, 3000);
         setTimeout(() => {
             dispatch(clearCart())
-           navigate('/products', { replace: true })
+            navigate('/products', { replace: true })
         }, 6000);
 
         setFormData({

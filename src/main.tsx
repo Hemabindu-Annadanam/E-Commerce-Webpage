@@ -1,19 +1,26 @@
 import './index.css'
 import App from './App.tsx'
 import ReactDOM from 'react-dom/client'
-import { HashRouter } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import store from './Store.tsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
+  const isProd = import.meta.env.PROD;
   root.render(
     <Provider store={store}>
-      <HashRouter basename="/">
-        <App />
-      </HashRouter>
+      {isProd ? (
+        <BrowserRouter basename="/E-Commerce-Webpage/">
+          <App />
+        </BrowserRouter>
+      ) : (
+        <HashRouter>
+          <App />
+        </HashRouter>
+      )}
     </Provider>,
   );
 } else {

@@ -41,7 +41,6 @@ const Checkout = React.memo(() => {
         address: '',
         payment: '',
     });
-
     const [errors, setErrors] = useState<ErrorsType>({});
 
     const [submittedData, setSubmittedData] = useState<FormDataType>({

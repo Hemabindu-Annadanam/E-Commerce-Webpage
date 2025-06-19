@@ -67,77 +67,64 @@ const Checkout = React.memo(() => {
         nameRef.current?.focus();
     }, []);
     const validate = () => {
-        const newErrors: any = {};
-        if (!formData.name.trim()) newErrors.name = 'Name is required';
+        const newErrors: ErrorsType = {};
+        if (!formData.name.trim()) newErrors.name = 'Name is required.';
+        else if (formData.name.trim().length < 2) newErrors.name = 'Name must be at least 2 characters.';
         if (!formData.email.trim()) {
-            newErrors.email = 'Email is required';
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Email is invalid';
+            newErrors.email = 'Email is required.';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = 'Please enter a valid email address.';
         }
-        if (!formData.address.trim()) newErrors.address = 'Address is required';
-        if (!formData.payment) newErrors.payment = 'Payment option is required';
-
+        if (!formData.address.trim()) newErrors.address = 'Address is required.';
+        else if (formData.address.trim().length < 5) newErrors.address = 'Address must be at least 5 characters.';
+        if (!formData.payment) newErrors.payment = 'Please select a payment option.';
         return newErrors;
     };
-    const handleChange = (e: any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
             [name]: value
         }));
-        if (errors.name) {
-            setErrors((prevErrors: any) => {
-                const newErrors = { ...prevErrors }
-                delete newErrors[name]
-                return newErrors;
-            })
+        if (touched[name as FormField]) {
+            const fieldErrors = validate();
+            setErrors(prevErrors => ({ ...prevErrors, [name]: fieldErrors[name as FormField] }));
         }
-
     };
-    const handleBlur = (e: any) => {
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name } = e.target;
-        setTouched(prev => ({ ...prev, [name]: true }))
+        setTouched(prev => ({ ...prev, [name]: true }));
         const fieldErrors = validate();
-        if (fieldErrors[name]) {
-            setErrors((prevErrors: any) => (
-                { ...prevErrors, [name]: fieldErrors[name] }
-
-            ))
-        }
-        else {
-            setErrors((prevErrors: any) => {
-                const newErrors = { ...prevErrors };
-                delete newErrors[name];
-                return newErrors;
-            });
-        }
-    }
+        setErrors(prevErrors => ({ ...prevErrors, [name]: fieldErrors[name as FormField] }));
+    };
     const [paidAmount, setPaidAmount] = useState<number | null>(null);
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const validationErrors = validate()
+        const validationErrors = validate();
+        setTouched({ name: true, email: true, address: true, payment: true });
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
+            toast.error('Please fix the errors in the form before submitting.');
             return;
         }
         setForm(false);
         setErrors({});
         setSubmittedData(formData);
-        setPaidAmount(subTotal); // Store the paid amount before clearing cart
+        setPaidAmount(subTotal);
         dispatch(clearCart());
         setTimeout(() => {
-            toast.success('Thank you for your purchase!')
-        }, 3000);
+            toast.success('Thank you for your purchase!');
+        }, 300);
         setTimeout(() => {
-            navigate('/products', { replace: true })
-        }, 6000);
-
+            navigate('/products', { replace: true });
+        }, 2000);
         setFormData({
             name: '',
             email: '',
             address: '',
             payment: ''
         });
+        setTouched({ name: false, email: false, address: false, payment: false });
     }
     const handleUseCurrentLocation = async () => {
         if (!navigator.geolocation) {
